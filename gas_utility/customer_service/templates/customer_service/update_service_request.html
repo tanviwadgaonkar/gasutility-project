@@ -1,0 +1,23 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Update Service Request</h2>
+
+  <h3>Request ID: {{ service_request.id }}</h3>
+  <p><strong>Customer:</strong> {{ service_request.customer.username }}</p>
+  <p><strong>Service Type:</strong> {{ service_request.service_type }}</p>
+  <p><strong>Description:</strong> {{ service_request.description }}</p>
+  <p><strong>Current Status:</strong> {{ service_request.status }}</p>
+
+  <!-- Form for updating service request details -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Update Request</button>
+  </form>
+
+  <br>
+  <a href="{% url 'service_request_detail' service_request.id %}">Back to Request Detail</a>
+
+{% endblock %}

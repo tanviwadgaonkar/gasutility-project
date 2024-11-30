@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Service Request Detail</h2>
+  <p><strong>Service Type:</strong> {{ service_request.service_type }}</p>
+  <p><strong>Description:</strong> {{ service_request.description }}</p>
+  <p><strong>Status:</strong> {{ service_request.status }}</p>
+  <p><strong>File Attachment:</strong> <a href="{{ service_request.file_attachment.url }}">Download</a></p>
+
+  {% if user == service_request.customer %}
+    <a href="{% url 'update_service_request' service_request.id %}">Update Request</a>
+  {% endif %}
+{% endblock %}

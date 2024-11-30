@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+  <h2>Your Service Requests</h2>
+
+  {% if requests %}
+    <table>
+      <tr>
+        <th>Service Type</th>
+        <th>Status</th>
+      </tr>
+      {% for request in requests %}
+        <tr>
+          <td>{{ request.service_type }}</td>
+          <td>{{ request.status }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No service requests found.</p>
+  {% endif %}
+{% endblock %}
